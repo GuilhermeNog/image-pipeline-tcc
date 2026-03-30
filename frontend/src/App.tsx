@@ -5,15 +5,12 @@ import { useThemeStore } from "@/stores/themeStore";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { EditorPage } from "@/pages/EditorPage";
 import { LoginPage } from "@/pages/LoginPage";
 import { RegisterPage } from "@/pages/RegisterPage";
 
 function DashboardPage() {
   return <div className="p-6"><h1 className="text-2xl font-bold">Dashboard</h1><p className="text-muted-foreground mt-2">Coming soon...</p></div>;
-}
-
-function EditorPage() {
-  return <div className="p-6"><h1 className="text-2xl font-bold">Pipeline Editor</h1><p className="text-muted-foreground mt-2">Coming soon...</p></div>;
 }
 
 function JobHistoryPage() {
