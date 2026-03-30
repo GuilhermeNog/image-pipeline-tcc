@@ -5,17 +5,12 @@ import { useThemeStore } from "@/stores/themeStore";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { DashboardPage } from "@/pages/DashboardPage";
 import { EditorPage } from "@/pages/EditorPage";
+import { JobDetailPage } from "@/pages/JobDetailPage";
+import { JobHistoryPage } from "@/pages/JobHistoryPage";
 import { LoginPage } from "@/pages/LoginPage";
 import { RegisterPage } from "@/pages/RegisterPage";
-
-function DashboardPage() {
-  return <div className="p-6"><h1 className="text-2xl font-bold">Dashboard</h1><p className="text-muted-foreground mt-2">Coming soon...</p></div>;
-}
-
-function JobHistoryPage() {
-  return <div className="p-6"><h1 className="text-2xl font-bold">Job History</h1><p className="text-muted-foreground mt-2">Coming soon...</p></div>;
-}
 
 export default function App() {
   const { fetchUser } = useAuthStore();
@@ -36,6 +31,7 @@ export default function App() {
           <Route path="/" element={<DashboardPage />} />
           <Route path="/editor" element={<EditorPage />} />
           <Route path="/jobs" element={<JobHistoryPage />} />
+          <Route path="/jobs/:id" element={<JobDetailPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
