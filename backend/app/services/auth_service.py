@@ -106,8 +106,12 @@ async def verify_email(db: AsyncSession, user: User, code: str) -> None:
         return
     if user.email_verification_token != code:
         raise TokenInvalidException()
-    if user.email_verification_expires and user.email_verification_expires < datetime.now(timezone.utc):
-        raise TokenInvalidException()
+    if user.email_verification_expires:
+        expires = user.email_verification_expires
+        if expires.tzinfo is None:
+            expires = expires.replace(tzinfo=timezone.utc)
+        if expires < datetime.now(timezone.utc):
+            raise TokenInvalidException()
     user.email_verified = True
     user.email_verification_token = None
     user.email_verification_expires = None
